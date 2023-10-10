@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: beige;
+        }
+        input, button {
+            font-size: 20px;
+            padding: 10px;
+            margin: 5px;
+        }
+        #output {
+            font-size: 24px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 200px;
+            margin: 10px auto;
+        }
+       
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <div>
+        <input type="text" id="output" readonly>
+    </div>
+    <div>
+        <button onclick="appendToOutput('1')">1</button>
+        <button onclick="appendToOutput('2')">2</button>
+        <button onclick="appendToOutput('3')">3</button>
+        <button onclick="performOperation('+')">+</button>
+    </div>
+    <div>
+        <button onclick="appendToOutput('4')">4</button>
+        <button onclick="appendToOutput('5')">5</button>
+        <button onclick="appendToOutput('6')">6</button>
+        <button onclick="performOperation('-')">-</button>
+    </div>
+    <div>
+        <button onclick="appendToOutput('7')">7</button>
+        <button onclick="appendToOutput('8')">8</button>
+        <button onclick="appendToOutput('9')">9</button>
+        <button onclick="performOperation('*')">*</button>
+    </div>
+    <div>
+        <button onclick="appendToOutput('0')">0</button>
+        <button onclick="clearOutput()">C</button>
+        <button onclick="calculateResult()">=</button>
+        <button onclick="performOperation('/')">/</button>
+    </div>
+
+    <script>
+        function appendToOutput(value) {
+            document.getElementById('output').value += value;
+        }
+
+        function performOperation(operator) {
+            document.getElementById('output').value += operator;
+        }
+
+        function clearOutput() {
+            document.getElementById('output').value = '';
+        }
+
+        function calculateResult() {
+            try {
+                const result = eval(document.getElementById('output').value);
+                document.getElementById('output').value = result;
+            } catch (error) {
+                document.getElementById('output').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
